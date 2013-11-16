@@ -14,6 +14,8 @@
 		http://www.springframework.org/schema/tx
 		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
+	<context:annotation-config />
+
 	<!-- Import bean definitions -->
 	<import resource="repository/repositories.xml" />
 	<import resource="service/services.xml" />
@@ -47,4 +49,10 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
 	</bean>
+	
+	<!-- Transaction configuration -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+	<tx:annotation-driven proxy-target-class="false" />
 </beans>
