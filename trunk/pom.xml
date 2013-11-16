@@ -1,0 +1,85 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<groupId>com.imoiseyenko.elstoref</groupId>
+	<artifactId>ElStoreF</artifactId>
+	<version>1.0</version>
+	<packaging>war</packaging>
+	
+	<dependencies>
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>sqljdbc4</artifactId>
+			<version>4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.2</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<sourceDirectory>${basedir}/src/main/java</sourceDirectory>
+		<testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
+		<testOutputDirectory>target/test-classes</testOutputDirectory>
+		<resources>
+			<resource>
+				<directory>${basedir}/src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>${basedir}/src/main/resources</directory>
+				<filtering>false</filtering>
+				<excludes>
+					<exclude>**/*.xml</exclude>
+				</excludes>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+						</manifest>
+						<addMavenDescriptor>false</addMavenDescriptor>
+					</archive>
+					<webResources>
+						<resource>
+							<directory>${basedir}/WebContent</directory>
+							<includes>
+								<include>*/**</include>
+							</includes>
+							<excludes>
+								<exclude>META-INF/MANIFEST.MF</exclude>
+								<exclude>WEB-INF/web.xml</exclude>
+								<exclude>**/*.jsp</exclude>
+							</excludes>
+							<filtering>false</filtering>
+						</resource>
+						<resource>
+							<directory>${basedir}/WebContent</directory>
+							<includes>
+								<exclude>META-INF/MANIFEST.MF</exclude>
+								<include>WEB-INF/web.xml</include>
+								<include>**/*.jsp</include>
+							</includes>
+							<filtering>true</filtering>
+						</resource>
+					</webResources>
+					<generateapplicationxml>true</generateapplicationxml>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
+</project>
