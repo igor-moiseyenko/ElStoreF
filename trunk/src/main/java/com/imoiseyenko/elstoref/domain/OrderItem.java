@@ -1,8 +1,6 @@
 package com.imoiseyenko.elstoref.domain;
 
-import java.io.Serializable;
-
-public abstract class DomainObject implements Serializable {
+public class OrderItem extends DomainObject {
 
 	private static final long serialVersionUID = 1L;
 
