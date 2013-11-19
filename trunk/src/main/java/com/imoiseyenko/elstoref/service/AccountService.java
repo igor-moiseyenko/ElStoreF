@@ -9,7 +9,7 @@ import com.imoiseyenko.elstoref.domain.Account;
 import com.imoiseyenko.elstoref.irepository.IAccountRepository;
 import com.imoiseyenko.elstoref.iservice.IAccountService;
 
-@Service("accountService")
+@Service
 @Transactional(propagation=Propagation.SUPPORTS, readOnly=true)
 public class AccountService implements IAccountService {
 	
@@ -18,9 +18,7 @@ public class AccountService implements IAccountService {
 
 	@Override
 	@Transactional(propagation=Propagation.REQUIRED, readOnly=false)
-	public Account createAccount (String username, String password, String email) {
-		
-		Account account = new Account(username, password, email);
+	public Account createAccount (Account account) {
 		
 		return accountRepository.create(account);
 	}

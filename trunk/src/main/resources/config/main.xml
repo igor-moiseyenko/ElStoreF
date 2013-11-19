@@ -15,10 +15,12 @@
 		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
 	<context:annotation-config />
-
-	<!-- Import bean definitions -->
-	<import resource="repository/repositories.xml" />
-	<import resource="service/services.xml" />
+	
+	<!-- Scan the package with repositories -->
+	<context:component-scan base-package="com.imoiseyenko.elstoref.repository" />
+	
+	<!-- Scan the package with services -->
+	<context:component-scan base-package="com.imoiseyenko.elstoref.service" />
 	
 	<!-- Properties -->
 	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -55,4 +57,5 @@
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 	<tx:annotation-driven proxy-target-class="false" />
+	
 </beans>

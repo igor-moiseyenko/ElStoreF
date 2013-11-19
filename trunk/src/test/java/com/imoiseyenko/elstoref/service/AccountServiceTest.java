@@ -1,4 +1,4 @@
-package com.imoiseyenko.elstoref.repository;
+package com.imoiseyenko.elstoref.service;
 
 import junit.framework.Assert;
 
@@ -13,23 +13,26 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.imoiseyenko.elstoref.domain.Account;
-import com.imoiseyenko.elstoref.irepository.IAccountRepository;
+import com.imoiseyenko.elstoref.iservice.IAccountService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @DirtiesContext(classMode=ClassMode.AFTER_EACH_TEST_METHOD)
 @ContextConfiguration(locations={"classpath:config/main.xml"})
-public class AccountRepositoryTest {
+public class AccountServiceTest {
 
 	@Autowired
-	private IAccountRepository accountRepository;
+	private IAccountService accountService;
 	
 	private Account testAccount;
 	
 	@Before
 	public void setUp () {
 		
-		testAccount = new Account("testU", "testPWD", "test@gmail.com");
+		testAccount = new Account();
 		testAccount.setId(null);
+		testAccount.setUsername("user_test_s");
+		testAccount.setPassword("pwd_test_s");
+		testAccount.setEmail("test_s@gmail.com");
 	}
 	
 	@After
@@ -41,7 +44,7 @@ public class AccountRepositoryTest {
 	@Test
 	public void createAccountTest () {
 		
-		Account account = accountRepository.create(testAccount);
+		Account account = accountService.createAccount(testAccount);
 		
 		Assert.assertNotNull(account.getId());
 	}
