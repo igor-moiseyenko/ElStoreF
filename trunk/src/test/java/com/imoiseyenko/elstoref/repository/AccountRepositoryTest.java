@@ -25,11 +25,24 @@ public class AccountRepositoryTest {
 	
 	private Account testAccount;
 	
+	private Long testId;
+	private String testUsername;
+	private String testPassword;
+	private String testEmail;
+	
 	@Before
 	public void setUp () {
 		
-		testAccount = new Account("testU", "testPWD", "test@gmail.com");
-		testAccount.setId(null);
+		testId = null;
+		testUsername = "test_u";
+		testPassword = "test_pwd";
+		testEmail = "test@gmail.com";
+		
+		testAccount = new Account();
+		testAccount.setId(testId);
+		testAccount.setUsername(testUsername);
+		testAccount.setPassword(testPassword);
+		testAccount.setEmail(testEmail);
 	}
 	
 	@After
@@ -39,10 +52,56 @@ public class AccountRepositoryTest {
 	}
 	
 	@Test
-	public void createAccountTest () {
+	public void crudTest () {
 		
-		Account account = accountRepository.create(testAccount);
+		Account account = createAccount(testAccount);
+		findAccountById(account.getId());
+		updateAccount(account);
+		deleteAccountById(account.getId());
+	}
+	
+	public Account createAccount (Account account) {
 		
-		Assert.assertNotNull(account.getId());
+		Account createdAccount = accountRepository.create(account);
+		
+		Assert.assertNotNull(createdAccount.getId());
+		
+		return createdAccount;
+	}
+	
+	public void findAccountById (Object id) {
+		
+		Account foundedAccount = accountRepository.findById(id);
+		
+		Assert.assertNotNull(foundedAccount);
+		
+		Assert.assertEquals(id, foundedAccount.getId());
+		Assert.assertEquals(testUsername, foundedAccount.getUsername());
+		Assert.assertEquals(testPassword, foundedAccount.getPassword());
+		Assert.assertEquals(testEmail, foundedAccount.getEmail());
+	}
+	
+	public void updateAccount (Account account) {
+		
+		Account foundedAccount = accountRepository.findById(account.getId());
+		
+		foundedAccount.setUsername("upd_u");
+		foundedAccount.setPassword("upd_pwd");
+		foundedAccount.setEmail("upd_email@gmail.com");
+		
+		Account updatedAccount = accountRepository.update(foundedAccount);
+		
+		Assert.assertEquals("upd_u", updatedAccount.getUsername());
+		Assert.assertEquals("upd_pwd", updatedAccount.getPassword());
+		Assert.assertEquals("upd_email@gmail.com", updatedAccount.getEmail());
+	}
+	
+	public void deleteAccountById (Object id) {
+		
+		accountRepository.deleteById(id);
+		
+		Account foundedAccount = accountRepository.findById(id);
+		
+		Assert.assertNull(foundedAccount);
 	}
 }
