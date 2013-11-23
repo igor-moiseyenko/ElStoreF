@@ -2,8 +2,10 @@ package com.imoiseyenko.elstoref.domain.inventoryItem.sparePartInfo;
 
 import javax.persistence.Embeddable;
 
+import com.imoiseyenko.elstoref.domain.IComparableByFields;
+
 @Embeddable
-public class DRAMInfo {
+public class DRAMInfo implements IComparableByFields {
 
 	private String type;
 	private double memory;
@@ -46,5 +48,29 @@ public class DRAMInfo {
 	public void setNumOfMemorySlots (int numOfMemorySlots) {
 	
 		this.numOfMemorySlots = numOfMemorySlots;
+	}
+
+	@Override
+	public boolean equalsByFields (Object obj) {
+
+		if (this == obj) {
+			
+			return true;
+		}
+		if ((obj == null) || (this.getClass() != obj.getClass())) {
+			
+			return false;
+		}
+		
+		DRAMInfo other = (DRAMInfo) obj;
+		
+		if (this.type.equals(other.type)
+				&& this.memory == other.memory
+				&& this.numOfMemorySlots == other.numOfMemorySlots) {
+			
+			return true;
+		}
+		
+		return false;
 	}
 }

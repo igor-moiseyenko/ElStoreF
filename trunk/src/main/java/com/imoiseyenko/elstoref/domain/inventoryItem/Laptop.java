@@ -12,8 +12,7 @@ public class Laptop extends InventoryItem {
 	private static final long serialVersionUID = 1L;
 	
 	private double screenDiagonal;
-	private double batteryCapacity;
-	private double ramSize;
+	private int batteryCapacity;
 	
 	@Embedded
 	private DRAMInfo dramInfo;
@@ -53,23 +52,39 @@ public class Laptop extends InventoryItem {
 		this.cpuInfo = cpuInfo;
 	}
 	
-	public double getBatteryCapacity () {
+	public int getBatteryCapacity () {
 	
 		return batteryCapacity;
 	}
 	
-	public void setBatteryCapacity (double batteryCapacity) {
+	public void setBatteryCapacity (int batteryCapacity) {
 	
 		this.batteryCapacity = batteryCapacity;
 	}
-	
-	public double getRamSize () {
-	
-		return ramSize;
-	}
-	
-	public void setRamSize (double ramSize) {
-	
-		this.ramSize = ramSize;
+
+	@Override
+	public boolean equalsByFields (Object obj) {
+
+		if (this == obj) {
+			
+			return true;
+		}
+		if ((obj == null) || (this.getClass() != obj.getClass())) {
+			
+			return false;
+		}
+		
+		Laptop other = (Laptop) obj;
+		
+		if (super.equalsByFields(other)
+				&& this.screenDiagonal == other.screenDiagonal
+				&& this.batteryCapacity == other.batteryCapacity
+				&& this.dramInfo.equalsByFields(other.dramInfo)
+				&& this.cpuInfo.equalsByFields(other.cpuInfo)) {
+			
+			return true;
+		}
+		
+		return false;
 	}
 }

@@ -143,4 +143,35 @@ public abstract class InventoryItem extends DomainObject {
 	
 		this.dateOfEntry = dateOfEntry;
 	}
+	
+	@Override
+	public boolean equalsByFields (Object obj) {
+
+		if (this == obj) {
+			
+			return true;
+		}
+		if ((obj == null) || (this.getClass() != obj.getClass())) {
+			
+			return false;
+		}
+		
+		InventoryItem other = (InventoryItem) obj;
+		
+		if (this.categoryName.equals(other.categoryName)
+				&& this.inventoryItemName.equals(other.inventoryItemName)
+				&& this.producerName.equals(other.producerName)
+				&& this.versionName.equals(other.versionName)
+				&& this.quantityInStock == other.quantityInStock
+				&& this.price == other.price
+				&& this.length == other.length
+				&& this.width == other.width
+				&& this.thickness == other.thickness
+				&& this.weight == other.weight) {
+			
+			return true;
+		}
+		
+		return false;
+	}
 }

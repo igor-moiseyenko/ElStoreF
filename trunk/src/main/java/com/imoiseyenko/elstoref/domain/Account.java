@@ -51,4 +51,11 @@ public class Account extends DomainObject {
 		
 		this.email = email;
 	}
+
+	@Override
+	public boolean equalsByFields (Object obj) {
+
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

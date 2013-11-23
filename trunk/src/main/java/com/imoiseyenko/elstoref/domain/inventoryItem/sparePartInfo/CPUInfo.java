@@ -2,8 +2,10 @@ package com.imoiseyenko.elstoref.domain.inventoryItem.sparePartInfo;
 
 import javax.persistence.Embeddable;
 
+import com.imoiseyenko.elstoref.domain.IComparableByFields;
+
 @Embeddable
-public class CPUInfo {
+public class CPUInfo implements IComparableByFields {
 
 	private String platform;
 	private int numOfCores;
@@ -46,6 +48,30 @@ public class CPUInfo {
 	public void setChipset (String chipset) {
 	
 		this.chipset = chipset;
+	}
+
+	@Override
+	public boolean equalsByFields (Object obj) {
+		
+		if (this == obj) {
+			
+			return true;
+		}
+		if ((obj == null) || (this.getClass() != obj.getClass())) {
+			
+			return false;
+		}
+		
+		CPUInfo other = (CPUInfo) obj;
+		
+		if (this.platform.equals(other.platform)
+				&& this.numOfCores == other.numOfCores
+				&& this.chipset.equals(other.chipset)) {
+			
+			return true;
+		}
+		
+		return false;
 	}
 	
 }

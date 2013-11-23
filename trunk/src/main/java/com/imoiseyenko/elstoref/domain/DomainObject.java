@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public abstract class DomainObject implements Serializable {
+public abstract class DomainObject implements Serializable, IComparableByFields {
 
 	private static final long serialVersionUID = 1L;
 

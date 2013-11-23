@@ -28,34 +28,65 @@ public class LaptopRepositoryTest {
 	private ILaptopRepository laptopRepository;
 	
 	private Laptop testLaptop;
-	private DRAMInfo dramInfo;
-	private CPUInfo cpuInfo;
+	
+	private Long testId;
+	private CategoryName testCategoryName;
+	private InventoryItemName testInventoryItemName;
+	private String testProducerName;
+	private String testVersionName;
+	private int testQuantityInStock;
+	private double testPrice;
+	private double testLength;
+	private double testWidth;
+	private double testThickness;
+	private double testWeight;
+	private double testScreenDiagonal;
+	private int testBatteryCapacity;
+	
+	private DRAMInfo testDramInfo;
+	private CPUInfo testCpuInfo;
+	
+	private double testPriceForUpdate;
 
 	@Before
 	public void setUp () {
 		
+		testId = null;
+		testCategoryName = CategoryName.COMPUTERS;
+		testInventoryItemName = InventoryItemName.LAPTOP;
+		testProducerName = "Sony";
+		testVersionName = "test_v";
+		testQuantityInStock = 100;
+		testPrice = 1000.0;
+		testLength = 20.0;
+		testWidth = 12.0;
+		testThickness = 2.0;
+		testWeight = 1.5;
+		testScreenDiagonal = 13.3;
+		testBatteryCapacity = 2600;
+		
 		testLaptop = new Laptop();
-		testLaptop.setId(null);
-		testLaptop.setCategoryName(CategoryName.COMPUTERS);
-		testLaptop.setInventoryItemName(InventoryItemName.LAPTOP);
-		testLaptop.setProducerName("Sony");
-		testLaptop.setVersionName("test_v");
-		testLaptop.setQuantityInStock(100);
-		testLaptop.setPrice(1000.0);
-		testLaptop.setLength(20.0);
-		testLaptop.setWidth(12.0);
-		testLaptop.setThickness(2.0);
-		testLaptop.setWidth(1.5);
-		testLaptop.setScreenDiagonal(13.3);
+		testLaptop.setId(testId);
+		testLaptop.setCategoryName(testCategoryName);
+		testLaptop.setInventoryItemName(testInventoryItemName);
+		testLaptop.setProducerName(testProducerName);
+		testLaptop.setVersionName(testVersionName);
+		testLaptop.setQuantityInStock(testQuantityInStock);
+		testLaptop.setPrice(testPrice);
+		testLaptop.setLength(testLength);
+		testLaptop.setWidth(testWidth);
+		testLaptop.setThickness(testThickness);
+		testLaptop.setWeight(testWeight);
+		testLaptop.setScreenDiagonal(testScreenDiagonal);
+		testLaptop.setBatteryCapacity(testBatteryCapacity);
 		
-		dramInfo = new DRAMInfo("DDR3", 8, 2);
-		testLaptop.setDramInfo(dramInfo);
+		testDramInfo = new DRAMInfo("DDR3", 8, 2);
+		testLaptop.setDramInfo(testDramInfo);
 		
-		cpuInfo = new CPUInfo("Intel Chief River (2012)", 4, "Intel HM76 Express");
-		testLaptop.setCpuInfo(cpuInfo);
+		testCpuInfo = new CPUInfo("Intel Chief River (2012)", 4, "Intel HM76 Express");
+		testLaptop.setCpuInfo(testCpuInfo);
 		
-		testLaptop.setBatteryCapacity(2600);
-		testLaptop.setRamSize(500.0);
+		testPriceForUpdate = 2000.0;
 	}
 	
 	@After
@@ -65,10 +96,45 @@ public class LaptopRepositoryTest {
 	}
 	
 	@Test
-	public void createLaptopTest () {
+	public void crudTest () {
 		
-		Laptop laptop = laptopRepository.create(testLaptop);
+		// Create
+		Laptop createdLaptop = laptopRepository.create(testLaptop);
+		Assert.assertNotNull(createdLaptop.getId());
 		
-		Assert.assertNotNull(laptop.getId());
+		// Find
+		Laptop foundedLaptop = laptopRepository.findById(createdLaptop.getId());
+		Assert.assertNotNull(foundedLaptop);
+		Assert.assertTrue(createdLaptop.equalsByFields(foundedLaptop));
+		
+		// Update
+		foundedLaptop.setPrice(testPriceForUpdate);
+		Laptop updatedLaptop = updateLaptop(foundedLaptop);
+		Assert.assertTrue(foundedLaptop.equalsByFields(updatedLaptop));
+		
+		// Delete
+		deleteLaptopById(foundedLaptop.getId());
+		Laptop deletedLaptop = laptopRepository.findById(foundedLaptop.getId());
+		Assert.assertNull(deletedLaptop);
+	}
+	
+	public Laptop createLaptop (Laptop laptop) {
+		
+		return laptopRepository.create(laptop);
+	}
+	
+	public Laptop findLaptopById (Object id) {
+		
+		return laptopRepository.findById(id);
+	}
+	
+	public Laptop updateLaptop (Laptop laptop) {
+		
+		return laptopRepository.update(laptop);
+	}
+	
+	public void deleteLaptopById (Object id) {
+		
+		laptopRepository.deleteById(id);
 	}
 }

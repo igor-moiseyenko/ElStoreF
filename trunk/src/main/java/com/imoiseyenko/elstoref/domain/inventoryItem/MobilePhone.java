@@ -12,8 +12,7 @@ public class MobilePhone extends InventoryItem {
 	private static final long serialVersionUID = 1L;
 	
 	private double screenDiagonal;
-	private double batteryCapacity;
-	private double ramSize;
+	private int batteryCapacity;
 	private double cameraPixels;
 	
 	@Embedded
@@ -54,24 +53,14 @@ public class MobilePhone extends InventoryItem {
 		this.cpuInfo = cpuInfo;
 	}
 	
-	public double getBatteryCapacity () {
+	public int getBatteryCapacity () {
 	
 		return batteryCapacity;
 	}
 	
-	public void setBatteryCapacity (double batteryCapacity) {
+	public void setBatteryCapacity (int batteryCapacity) {
 	
 		this.batteryCapacity = batteryCapacity;
-	}
-	
-	public double getRamSize () {
-	
-		return ramSize;
-	}
-	
-	public void setRamSize (double ramSize) {
-	
-		this.ramSize = ramSize;
 	}
 	
 	public double getCameraPixels () {
@@ -82,5 +71,12 @@ public class MobilePhone extends InventoryItem {
 	public void setCameraPixels (double cameraPixels) {
 	
 		this.cameraPixels = cameraPixels;
+	}
+
+	@Override
+	public boolean equalsByFields (Object obj) {
+
+		// TODO Auto-generated method stub
+		return false;
 	}
 }
