@@ -7,13 +7,14 @@ import com.imoiseyenko.elstoref.domain.inventoryItem.sparePartInfo.CPUInfo;
 import com.imoiseyenko.elstoref.domain.inventoryItem.sparePartInfo.DRAMInfo;
 
 @Entity
-public class Laptop extends InventoryItem {
+public class MobilePhone extends InventoryItem {
 	
 	private static final long serialVersionUID = 1L;
 	
 	private double screenDiagonal;
 	private double batteryCapacity;
 	private double ramSize;
+	private double cameraPixels;
 	
 	@Embedded
 	private DRAMInfo dramInfo;
@@ -21,7 +22,7 @@ public class Laptop extends InventoryItem {
 	@Embedded
 	private CPUInfo cpuInfo;
 	
-	public Laptop () {}
+	public MobilePhone () {}
 	
 	public double getScreenDiagonal () {
 	
@@ -71,5 +72,15 @@ public class Laptop extends InventoryItem {
 	public void setRamSize (double ramSize) {
 	
 		this.ramSize = ramSize;
+	}
+	
+	public double getCameraPixels () {
+	
+		return cameraPixels;
+	}
+	
+	public void setCameraPixels (double cameraPixels) {
+	
+		this.cameraPixels = cameraPixels;
 	}
 }

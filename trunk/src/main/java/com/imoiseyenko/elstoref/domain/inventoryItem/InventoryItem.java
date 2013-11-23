@@ -9,6 +9,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.imoiseyenko.elstoref.domain.DomainObject;
+import com.imoiseyenko.elstoref.domain.util.CategoryName;
+import com.imoiseyenko.elstoref.domain.util.InventoryItemName;
 
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)

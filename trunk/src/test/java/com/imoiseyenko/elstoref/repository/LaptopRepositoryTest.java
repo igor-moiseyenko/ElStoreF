@@ -12,9 +12,11 @@ import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.imoiseyenko.elstoref.domain.inventoryItem.CategoryName;
-import com.imoiseyenko.elstoref.domain.inventoryItem.InventoryItemName;
 import com.imoiseyenko.elstoref.domain.inventoryItem.Laptop;
+import com.imoiseyenko.elstoref.domain.inventoryItem.sparePartInfo.CPUInfo;
+import com.imoiseyenko.elstoref.domain.inventoryItem.sparePartInfo.DRAMInfo;
+import com.imoiseyenko.elstoref.domain.util.CategoryName;
+import com.imoiseyenko.elstoref.domain.util.InventoryItemName;
 import com.imoiseyenko.elstoref.irepository.ILaptopRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -26,6 +28,8 @@ public class LaptopRepositoryTest {
 	private ILaptopRepository laptopRepository;
 	
 	private Laptop testLaptop;
+	private DRAMInfo dramInfo;
+	private CPUInfo cpuInfo;
 
 	@Before
 	public void setUp () {
@@ -43,8 +47,13 @@ public class LaptopRepositoryTest {
 		testLaptop.setThickness(2.0);
 		testLaptop.setWidth(1.5);
 		testLaptop.setScreenDiagonal(13.3);
-		testLaptop.setOs("Linux Ubuntu 12.04");
-		testLaptop.setProcessor("Intel Core i5");
+		
+		dramInfo = new DRAMInfo("DDR3", 8, 2);
+		testLaptop.setDramInfo(dramInfo);
+		
+		cpuInfo = new CPUInfo("Intel Chief River (2012)", 4, "Intel HM76 Express");
+		testLaptop.setCpuInfo(cpuInfo);
+		
 		testLaptop.setBatteryCapacity(2600);
 		testLaptop.setRamSize(500.0);
 	}
