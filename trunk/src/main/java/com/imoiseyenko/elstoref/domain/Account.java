@@ -55,7 +55,24 @@ public class Account extends DomainObject {
 	@Override
 	public boolean equalsByFields (Object obj) {
 
-		// TODO Auto-generated method stub
+		if (this == obj) {
+			
+			return true;
+		}
+		if ((obj == null) || (this.getClass() != obj.getClass())) {
+			
+			return false;
+		}
+		
+		Account other = (Account) obj;
+		
+		if (this.username.equals(other.username)
+				&& this.password.equals(other.password)
+				&& this.email.equals(other.email)) {
+			
+			return true;
+		}
+		
 		return false;
 	}
 }

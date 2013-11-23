@@ -113,8 +113,8 @@ public class LaptopRepositoryTest {
 		Assert.assertTrue(foundedLaptop.equalsByFields(updatedLaptop));
 		
 		// Delete
-		deleteLaptopById(foundedLaptop.getId());
-		Laptop deletedLaptop = laptopRepository.findById(foundedLaptop.getId());
+		deleteLaptopById(updatedLaptop.getId());
+		Laptop deletedLaptop = laptopRepository.findById(updatedLaptop.getId());
 		Assert.assertNull(deletedLaptop);
 	}
 	
