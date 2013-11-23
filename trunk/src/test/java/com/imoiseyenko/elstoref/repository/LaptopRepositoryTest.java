@@ -100,6 +100,7 @@ public class LaptopRepositoryTest {
 		
 		// Create
 		Laptop createdLaptop = laptopRepository.create(testLaptop);
+		Assert.assertNotNull(createdLaptop);
 		Assert.assertNotNull(createdLaptop.getId());
 		
 		// Find
@@ -110,6 +111,7 @@ public class LaptopRepositoryTest {
 		// Update
 		foundedLaptop.setPrice(testPriceForUpdate);
 		Laptop updatedLaptop = updateLaptop(foundedLaptop);
+		Assert.assertNotNull(updatedLaptop);
 		Assert.assertTrue(foundedLaptop.equalsByFields(updatedLaptop));
 		
 		// Delete

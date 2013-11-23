@@ -76,7 +76,25 @@ public class MobilePhone extends InventoryItem {
 	@Override
 	public boolean equalsByFields (Object obj) {
 
-		// TODO Auto-generated method stub
+		if (this == obj) {
+			
+			return true;
+		}
+		if ((obj == null) || (this.getClass() != obj.getClass())) {
+			
+			return false;
+		}
+		
+		MobilePhone other = (MobilePhone) obj;
+		
+		if (super.equalsByFields(other)
+				&& this.screenDiagonal == other.screenDiagonal
+				&& this.batteryCapacity == other.batteryCapacity
+				&& this.cameraPixels == other.cameraPixels) {
+			
+			return true;
+		}
+		
 		return false;
 	}
 }
