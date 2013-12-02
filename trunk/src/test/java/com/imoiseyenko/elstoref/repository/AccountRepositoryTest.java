@@ -97,4 +97,40 @@ public class AccountRepositoryTest {
 		
 		accountRepository.deleteById(id);
 	}
+	
+	@Test
+	public void findAccountByUsernameTest () {
+		
+		// Create
+		Account createdAccount = createAccount(testAccount);
+		Assert.assertNotNull(createdAccount.getId());
+		
+		// Find by username
+		Account foundedAccount = accountRepository.findAccountByUsername(createdAccount.getUsername());
+		Assert.assertNotNull(foundedAccount);
+		Assert.assertTrue(createdAccount.equalsByFields(foundedAccount));
+		
+		// Delete
+		deleteAccountById(foundedAccount.getId());
+		Account deletedAccount = findAccountById(foundedAccount.getId());
+		Assert.assertNull(deletedAccount);
+	}
+	
+	@Test
+	public void findAccountByEmailTest () {
+		
+		// Create
+		Account createdAccount = createAccount(testAccount);
+		Assert.assertNotNull(createdAccount.getId());
+		
+		// Find by email
+		Account foundedAccount = accountRepository.findAccountByEmail(createdAccount.getEmail());
+		Assert.assertNotNull(foundedAccount);
+		Assert.assertTrue(createdAccount.equalsByFields(foundedAccount));
+		
+		// Delete
+		deleteAccountById(foundedAccount.getId());
+		Account deletedAccount = findAccountById(foundedAccount.getId());
+		Assert.assertNull(deletedAccount);
+	}
 }

@@ -11,4 +11,8 @@ public interface IAccountService {
 	public Account updateAccount (Account account);
 	
 	public void deleteAccountById (Object id);
+	
+	public Account findAccountByUsername (String username);
+	
+	public Account findAccountByEmail (String email);
 }
