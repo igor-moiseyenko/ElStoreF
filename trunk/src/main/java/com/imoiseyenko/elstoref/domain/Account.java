@@ -1,10 +1,16 @@
 package com.imoiseyenko.elstoref.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="Account", schema="dbo")
+@NamedQueries({
+	@NamedQuery(name="Account.findAccountByUsername", query="SELECT a FROM Account a WHERE a.username = :username"),
+	@NamedQuery(name="Account.findAccountByEmail", query="SELECT a FROM Account a WHERE a.email = :email")
+})
 public class Account extends DomainObject {
 
 	private static final long serialVersionUID = 1L;
