@@ -10,6 +10,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<link href="<s:url value="/resources/bootstrap/dist/css/bootstrap.min.css" />" rel="stylesheet" type="text/css" />
 		<link href="<s:url value="/resources/css/justified-nav.css" />" rel="stylesheet" type="text/css" />
+		<link href="<s:url value="/resources/css/signin.css" />" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
 		<div class="container">
