@@ -1,5 +1,7 @@
 package com.imoiseyenko.elstoref.repository;
 
+import java.util.List;
+
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
@@ -17,8 +19,9 @@ public class AccountRepository extends GenericRepository<Account> implements IAc
 
 		TypedQuery<Account> query = em.createNamedQuery("Account.findAccountByUsername", Account.class);
 		query.setParameter("username", username);
+		List<Account> results = query.getResultList();
 		
-		return query.getSingleResult();
+		return !results.isEmpty() ? results.get(0) : null;
 	}
 
 	@Override
@@ -26,8 +29,9 @@ public class AccountRepository extends GenericRepository<Account> implements IAc
 
 		TypedQuery<Account> query = em.createNamedQuery("Account.findAccountByEmail", Account.class);
 		query.setParameter("email", email);
+		List<Account> results = query.getResultList();
 		
-		return query.getSingleResult();
+		return !results.isEmpty() ? results.get(0) : null;
 	}
 
 }

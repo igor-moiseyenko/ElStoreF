@@ -7,7 +7,7 @@
 	<h1>Login</h1>
 </div>
 
-<form class="form-signin" action="<s:url value="/doLogin" />">
+<form class="form-signin" action="<s:url value="/login/doLogin" />">
 	<h2 class="form-signin-heading">Please sign in</h2>
 	<input name="username" type="text" class="form-control" placeholder="Username" autofocus />
 	<input name="password" type="password" class="form-control" placeholder="Password">
