@@ -18,14 +18,14 @@ public class LoginController {
 	
 	@Autowired
 	private IAccountService accountService;
-
-	@RequestMapping("")
+	
+	@RequestMapping(method=RequestMethod.GET)
 	public String showLoginPage (Map<String, Object> model) {
 		
 		return "login";
 	}
 	
-	@RequestMapping(value="doLogin", method=RequestMethod.GET)
+	@RequestMapping(value="doLogin", method=RequestMethod.POST)
 	public String doLogin (@RequestParam("username") String username, @RequestParam("password") String password, Model model) {
 		
 		Account account = accountService.findAccountByUsername(username);
