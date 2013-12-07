@@ -1,4 +1,4 @@
-package com.imoiseyenko.elstoref.controller;
+package com.imoiseyenko.elstoref.controller.account;
 
 import javax.validation.Valid;
 
