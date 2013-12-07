@@ -13,19 +13,19 @@ import com.imoiseyenko.elstoref.domain.Account;
 import com.imoiseyenko.elstoref.iservice.IAccountService;
 
 @Controller
-@RequestMapping("login")
+@RequestMapping("account")
 public class LoginController {
 	
 	@Autowired
 	private IAccountService accountService;
 	
-	@RequestMapping(method=RequestMethod.GET)
+	@RequestMapping(value="signin", method=RequestMethod.GET)
 	public String showLoginPage (Map<String, Object> model) {
 		
-		return "login";
+		return "signin";
 	}
 	
-	@RequestMapping(value="doLogin", method=RequestMethod.POST)
+	@RequestMapping(value="doSignIn", method=RequestMethod.POST)
 	public String doLogin (@RequestParam("username") String username, @RequestParam("password") String password, Model model) {
 		
 		Account account = accountService.findAccountByUsername(username);
@@ -39,6 +39,6 @@ public class LoginController {
 			}
 		}
 		
-		return "login";
+		return "signin";
 	}
 }

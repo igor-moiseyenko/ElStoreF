@@ -13,27 +13,27 @@ import com.imoiseyenko.elstoref.domain.Account;
 import com.imoiseyenko.elstoref.iservice.IAccountService;
 
 @Controller
-@RequestMapping("register")
+@RequestMapping("account")
 public class RegisterController {
 
 	@Autowired
 	private IAccountService accountService;
 
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value="signup", method = RequestMethod.GET)
 	public String showRegisterPage (Model model) {
 		
 		model.addAttribute(new Account());
 		
-		return "register";
+		return "signup";
 	}
 	
-	@RequestMapping(value = "doRegister", method = RequestMethod.POST)
+	@RequestMapping(value="doSignUp", method = RequestMethod.POST)
 	public String doRegister (@Valid Account account, BindingResult bindingResult) {
 		
 		// Check for errors
 		if (bindingResult.hasErrors()) {
 			
-			return "register";
+			return "signup";
 		}
 		
 		if (accountService.findAccountByUsername(account.getUsername()) == null) {
@@ -44,12 +44,12 @@ public class RegisterController {
 			}
 			else {
 				
-				return "register";
+				return "signup";
 			}
 		}
 		else {
 			
-			return "register";
+			return "signup";
 		}
 
 		return "home";
