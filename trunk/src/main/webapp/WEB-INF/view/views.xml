@@ -23,4 +23,8 @@
 		<put-attribute name="content" value="/WEB-INF/view/login.jsp" />
 	</definition>
 	
+	<definition name="register" extends="template">
+		<put-attribute name="content" value="/WEB-INF/view/register.jsp" />
+	</definition>
+	
 </tiles-definitions>
