@@ -6,8 +6,8 @@
 	<ul class="nav nav-justified">
 		<li class="active"><a href="<s:url value="/home" />">Home</a></li>
 		<li><a href="catalog.html">Catalog</a></li>
-		<li><a href="<s:url value="/login" />">Login</a></li>
-		<li><a href="<s:url value="/register" />">Register</a></li>
+		<li><a href="<s:url value="/account/signin" />">Login</a></li>
+		<li><a href="<s:url value="/account/signup" />">Register</a></li>
 		<li><a href="shopping_cart.html">Shopping Cart</a></li>
 		<li><a href="<s:url value="/about" />">About</a></li>
 	</ul>

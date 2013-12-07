@@ -4,7 +4,7 @@
 	<h1>Register</h1>
 </div>
 
-<sf:form cssClass="form-signin" modelAttribute="account" action="${pageContext.request.contextPath}/register/doRegister" method="post">
+<sf:form cssClass="form-signin" modelAttribute="account" action="${pageContext.request.contextPath}/account/doSignUp" method="post">
 	<h2 class="form-signin-heading">Please sign in</h2>
 	<sf:input path="username" cssClass="form-control" placeholder="Username" onfocus="true" />
 	<sf:input path="email" cssClass="form-control" placeholder="Email address" />

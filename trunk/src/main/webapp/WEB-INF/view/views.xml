@@ -19,11 +19,11 @@
 		<put-attribute name="content" value="/WEB-INF/view/about.jsp" />
 	</definition>
 	
-	<definition name="login" extends="template">
+	<definition name="signin" extends="template">
 		<put-attribute name="content" value="/WEB-INF/view/login.jsp" />
 	</definition>
 	
-	<definition name="register" extends="template">
+	<definition name="signup" extends="template">
 		<put-attribute name="content" value="/WEB-INF/view/register.jsp" />
 	</definition>
 	
