@@ -17,12 +17,20 @@ import com.imoiseyenko.elstoref.domain.inventoryItem.sparePartInfo.CPUInfo;
 import com.imoiseyenko.elstoref.domain.inventoryItem.sparePartInfo.DRAMInfo;
 import com.imoiseyenko.elstoref.domain.util.CategoryName;
 import com.imoiseyenko.elstoref.domain.util.InventoryItemName;
+import com.imoiseyenko.elstoref.irepository.ICategoryNameRepository;
+import com.imoiseyenko.elstoref.irepository.IInventoryItemNameRepository;
 import com.imoiseyenko.elstoref.irepository.ILaptopRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @DirtiesContext(classMode=ClassMode.AFTER_EACH_TEST_METHOD)
 @ContextConfiguration(locations={"classpath:config/main.xml"})
 public class LaptopRepositoryTest {
+	
+	@Autowired
+	private ICategoryNameRepository categoryNameRepository;
+	
+	@Autowired
+	private IInventoryItemNameRepository inventoryItemNameRepository;
 	
 	@Autowired
 	private ILaptopRepository laptopRepository;
@@ -51,9 +59,15 @@ public class LaptopRepositoryTest {
 	@Before
 	public void setUp () {
 		
+		testCategoryName = new CategoryName("Computers");
+		categoryNameRepository.create(testCategoryName);
+		
+		testInventoryItemName = new InventoryItemName("Laptop");
+		inventoryItemNameRepository.create(testInventoryItemName);
+		
 		testId = null;
-		testCategoryName = CategoryName.COMPUTERS;
-		testInventoryItemName = InventoryItemName.LAPTOP;
+		//testCategoryName = categoryNameRepository.findCategoryNameByName("Computers");
+		//testInventoryItemName = inventoryItemNameRepository.findInventoryItemNameByName("Laptop");
 		testProducerName = "Sony";
 		testVersionName = "test_v";
 		testQuantityInStock = 100;
@@ -93,6 +107,9 @@ public class LaptopRepositoryTest {
 	public void tearDown () {
 		
 		testLaptop = null;
+		
+		categoryNameRepository.deleteById(testCategoryName.getId());
+		inventoryItemNameRepository.deleteById(testInventoryItemName.getId());
 	}
 	
 	@Test
