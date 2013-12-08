@@ -70,6 +70,7 @@ public class AccountRepositoryTest {
 		// Update
 		foundedAccount.setEmail(testEmailForUpdate);
 		Account updatedAccount = updateAccount(foundedAccount);
+		Assert.assertNotNull(updatedAccount);
 		Assert.assertTrue(foundedAccount.equalsByFields(updatedAccount));
 		
 		// Delete
@@ -121,6 +122,7 @@ public class AccountRepositoryTest {
 		
 		// Create
 		Account createdAccount = createAccount(testAccount);
+		Assert.assertNotNull(createdAccount);
 		Assert.assertNotNull(createdAccount.getId());
 		
 		// Find by email
