@@ -29,7 +29,7 @@ public abstract class DomainObject implements Serializable, IComparableByFields 
 	@Override
 	public int hashCode () {
 	
-		return id.intValue();
+		return id != null ? id.intValue() : super.hashCode();
 	}
 	
 	@Override
@@ -46,11 +46,11 @@ public abstract class DomainObject implements Serializable, IComparableByFields 
 		
 		DomainObject other = (DomainObject) obj;
 		
-		if (this.getId().equals(other.getId())) {
+		if ((this.getId() == null) || (other.getId() == null)) {
 			
-			return true;
+			return false;
 		}
 		
-		return false;
+		return this.getId().equals(other.getId());
 	}
 }
