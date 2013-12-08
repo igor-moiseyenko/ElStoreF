@@ -10,7 +10,6 @@ import com.imoiseyenko.elstoref.irepository.ILaptopRepository;
 import com.imoiseyenko.elstoref.iservice.ILaptopService;
 
 @Service
-@Transactional(propagation=Propagation.SUPPORTS, readOnly=true)
 public class LaptopService implements ILaptopService {
 	
 	@Autowired
@@ -24,18 +23,21 @@ public class LaptopService implements ILaptopService {
 	}
 
 	@Override
+	@Transactional(propagation=Propagation.SUPPORTS, readOnly=true)
 	public Laptop findLaptopById (Object id) {
 
 		return laptopRepository.findById(id);
 	}
 
 	@Override
+	@Transactional(propagation=Propagation.REQUIRED, readOnly=false)
 	public Laptop updateLaptop (Laptop laptop) {
 
 		return laptopRepository.update(laptop);
 	}
 
 	@Override
+	@Transactional(propagation=Propagation.REQUIRED, readOnly=false)
 	public void deleteLaptopById (Object id) {
 
 		laptopRepository.deleteById(id);
