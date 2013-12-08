@@ -60,10 +60,10 @@ public class MobilePhoneRepositoryTest {
 	@Before
 	public void setUp () {
 		
-		testCategoryName = new CategoryName("Phones");
+		testCategoryName = new CategoryName("TestCategoryName");
 		categoryNameRepository.create(testCategoryName);
 		
-		testInventoryItemName = new InventoryItemName("Mobile Phone");
+		testInventoryItemName = new InventoryItemName("TestInvItemName");
 		inventoryItemNameRepository.create(testInventoryItemName);
 		
 		testId = null;

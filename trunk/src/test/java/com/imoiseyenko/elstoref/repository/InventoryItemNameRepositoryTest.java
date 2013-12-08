@@ -30,9 +30,9 @@ public class InventoryItemNameRepositoryTest {
 	@Before
 	public void setUp () {
 		
-		testName = "Laptop";
+		testName = "TestInvItemName";
 		testInventoryItemName = new InventoryItemName(testName);
-		testNameForUpdate = "MP3Player";
+		testNameForUpdate = "TestInvItemNameUpd";
 	}
 	
 	@After

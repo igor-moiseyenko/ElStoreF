@@ -30,9 +30,9 @@ public class CategoryNameRepositoryTest {
 	@Before
 	public void setUp () {
 		
-		testName = "Computers";
+		testName = "TestCategoryName";
 		testCategoryName = new CategoryName(testName);
-		testNameForUpdate = "Audio";
+		testNameForUpdate = "TestCategoryNameUpd";
 	}
 	
 	@After

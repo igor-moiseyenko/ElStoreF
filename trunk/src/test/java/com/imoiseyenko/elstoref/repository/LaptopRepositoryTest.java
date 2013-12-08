@@ -59,10 +59,10 @@ public class LaptopRepositoryTest {
 	@Before
 	public void setUp () {
 		
-		testCategoryName = new CategoryName("Computers");
+		testCategoryName = new CategoryName("TestCategoryName");
 		categoryNameRepository.create(testCategoryName);
 		
-		testInventoryItemName = new InventoryItemName("Laptop");
+		testInventoryItemName = new InventoryItemName("TestInvItemName");
 		inventoryItemNameRepository.create(testInventoryItemName);
 		
 		testId = null;
