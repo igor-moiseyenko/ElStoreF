@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <div class="jumbotron">
-	<h1>Login</h1>
+	<h1>Sing in</h1>
 </div>
 
 <form class="form-signin" action="<s:url value="/account/doSignIn" />" method="post">
