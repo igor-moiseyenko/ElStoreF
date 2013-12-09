@@ -12,13 +12,15 @@ import com.imoiseyenko.elstoref.irepository.IMobilePhoneRepository;
 
 @Repository
 @Transactional
-public class MobilePhoneRepository extends GenericRepository<MobilePhone> implements IMobilePhoneRepository {
+public class MobilePhoneRepository extends GenericRepository<MobilePhone>
+		implements IMobilePhoneRepository {
 
 	@Override
 	public List<MobilePhone> findAllMobilePhones () {
 
-		TypedQuery<MobilePhone> query = em.createNamedQuery("MobilePhone.findAllMobilePhones", MobilePhone.class);
-		
+		TypedQuery<MobilePhone> query = em.createNamedQuery(
+				"MobilePhone.findAllMobilePhones", MobilePhone.class);
+
 		return query.getResultList();
 	}
 
