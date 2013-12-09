@@ -35,4 +35,8 @@
 		<put-attribute name="content" value="/WEB-INF/view/catalog/laptop_catalog.jsp" />
 	</definition>
 	
+	<definition name="inventory_item_catalog" extends="template">
+		<put-attribute name="content" value="/WEB-INF/view/catalog/inventory_item_catalog.jsp" />
+	</definition>
+	
 </tiles-definitions>
