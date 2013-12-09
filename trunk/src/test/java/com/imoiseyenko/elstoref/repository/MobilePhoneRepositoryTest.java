@@ -35,10 +35,11 @@ public class MobilePhoneRepositoryTest {
 	@Autowired
 	private IMobilePhoneRepository mobilePhoneRepository;
 	
+	private CategoryName testCategoryName;
+	
 	private MobilePhone testMobilePhone;
 	
 	private Long testId;
-	private CategoryName testCategoryName;
 	private InventoryItemName testInventoryItemName;
 	private String testProducerName;
 	private String testVersionName;
@@ -63,12 +64,11 @@ public class MobilePhoneRepositoryTest {
 		testCategoryName = new CategoryName("TestCategoryName");
 		categoryNameRepository.create(testCategoryName);
 		
-		testInventoryItemName = new InventoryItemName("TestInvItemName");
+		testInventoryItemName = new InventoryItemName("TestInvItemName", "TestMappingUrl");
+		testCategoryName.addInventoryItemName(testInventoryItemName);
 		inventoryItemNameRepository.create(testInventoryItemName);
 		
 		testId = null;
-		//testCategoryName = categoryNameRepository.findCategoryNameByName("Phones");
-		//testInventoryItemName = inventoryItemNameRepository.findInventoryItemNameByName("Mobile Phone");
 		testProducerName = "Sony";
 		testVersionName = "test_v";
 		testQuantityInStock = 100;
@@ -85,7 +85,6 @@ public class MobilePhoneRepositoryTest {
 		
 		testMobilePhone = new MobilePhone();
 		testMobilePhone.setId(testId);
-		testMobilePhone.setCategoryName(testCategoryName);
 		testMobilePhone.setInventoryItemName(testInventoryItemName);
 		testMobilePhone.setProducerName(testProducerName);
 		testMobilePhone.setVersionName(testVersionName);
@@ -111,8 +110,8 @@ public class MobilePhoneRepositoryTest {
 		
 		testMobilePhone = null;
 		
+		//inventoryItemNameRepository.deleteById(testInventoryItemName.getId());
 		categoryNameRepository.deleteById(testCategoryName.getId());
-		inventoryItemNameRepository.deleteById(testInventoryItemName.getId());
 	}
 	
 	@Test

@@ -12,8 +12,12 @@ import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.imoiseyenko.elstoref.domain.util.CategoryName;
 import com.imoiseyenko.elstoref.domain.util.InventoryItemName;
+import com.imoiseyenko.elstoref.irepository.ICategoryNameRepository;
 import com.imoiseyenko.elstoref.irepository.IInventoryItemNameRepository;
+
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @DirtiesContext(classMode=ClassMode.AFTER_EACH_TEST_METHOD)
@@ -21,17 +25,28 @@ import com.imoiseyenko.elstoref.irepository.IInventoryItemNameRepository;
 public class InventoryItemNameRepositoryTest {
 
 	@Autowired
+	private ICategoryNameRepository categoryNameRepository;
+	
+	@Autowired
 	private IInventoryItemNameRepository inventoryItemNameRepository;
+	
+	private CategoryName testCategoryName;
 	
 	private InventoryItemName testInventoryItemName;
 	private String testName;
+	private String testMappingUrl;
 	private String testNameForUpdate;
 	
 	@Before
 	public void setUp () {
 		
+		testCategoryName = new CategoryName("TestCategoryName");
+		categoryNameRepository.create(testCategoryName);
+		
 		testName = "TestInvItemName";
-		testInventoryItemName = new InventoryItemName(testName);
+		testMappingUrl = "testMappingUrl";
+		testInventoryItemName = new InventoryItemName(testName, testMappingUrl);
+		
 		testNameForUpdate = "TestInvItemNameUpd";
 	}
 	
@@ -39,12 +54,15 @@ public class InventoryItemNameRepositoryTest {
 	public void tearDown () {
 		
 		testInventoryItemName = null;
+		
+		//categoryNameRepository.deleteById(testCategoryName.getId());
 	}
 	
 	@Test
 	public void crudTest () {
 		
 		// Create
+		testCategoryName.addInventoryItemName(testInventoryItemName);
 		InventoryItemName createdInventoryItemName = createInventoryItemName(testInventoryItemName);
 		Assert.assertNotNull(createdInventoryItemName);
 		Assert.assertNotNull(createdInventoryItemName.getId());
@@ -61,7 +79,11 @@ public class InventoryItemNameRepositoryTest {
 		Assert.assertTrue(foundedInventoryItemName.equalsByFields(updatedInventoryItemName));
 		
 		// Delete
-		deleteInventoryItemNameById(updatedInventoryItemName.getId());
+		//updatedInventoryItemName.getCategoryName().getInventoryItemNames().remove(updatedInventoryItemName);
+		//foundedInventoryItemName.setCategoryName(null);
+		testCategoryName.removeInventoryItemName(updatedInventoryItemName);
+		categoryNameRepository.deleteById(testCategoryName.getId());
+		//deleteInventoryItemNameById(updatedInventoryItemName.getId());
 		InventoryItemName deletedInventoryItemName = findInventoryItemNameById(updatedInventoryItemName.getId());
 		Assert.assertNull(deletedInventoryItemName);
 	}
@@ -90,6 +112,7 @@ public class InventoryItemNameRepositoryTest {
 	public void findInventoryItemNameByName () {
 		
 		// Create
+		testCategoryName.addInventoryItemName(testInventoryItemName);
 		InventoryItemName createdInventoryItemName = createInventoryItemName(testInventoryItemName);
 		Assert.assertNotNull(createdInventoryItemName);
 		Assert.assertNotNull(createdInventoryItemName.getId());
@@ -100,7 +123,11 @@ public class InventoryItemNameRepositoryTest {
 		Assert.assertTrue(createdInventoryItemName.equalsByFields(foundedInventoryItemName));
 		
 		// Delete
-		deleteInventoryItemNameById(foundedInventoryItemName.getId());
+		//foundedInventoryItemName.getCategoryName().getInventoryItemNames().remove(foundedInventoryItemName);
+		//foundedInventoryItemName.setCategoryName(null);
+		testCategoryName.removeInventoryItemName(foundedInventoryItemName);
+		categoryNameRepository.deleteById(testCategoryName.getId());
+		//deleteInventoryItemNameById(foundedInventoryItemName.getId());
 		InventoryItemName deletedInventoryItemName = findInventoryItemNameById(foundedInventoryItemName.getId());
 		Assert.assertNull(deletedInventoryItemName);
 	}

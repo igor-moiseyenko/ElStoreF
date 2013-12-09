@@ -35,10 +35,11 @@ public class LaptopRepositoryTest {
 	@Autowired
 	private ILaptopRepository laptopRepository;
 	
+	private CategoryName testCategoryName;
+	
 	private Laptop testLaptop;
 	
 	private Long testId;
-	private CategoryName testCategoryName;
 	private InventoryItemName testInventoryItemName;
 	private String testProducerName;
 	private String testVersionName;
@@ -62,12 +63,11 @@ public class LaptopRepositoryTest {
 		testCategoryName = new CategoryName("TestCategoryName");
 		categoryNameRepository.create(testCategoryName);
 		
-		testInventoryItemName = new InventoryItemName("TestInvItemName");
+		testInventoryItemName = new InventoryItemName("TestInvItemName", "TestMappingUrl");
+		testCategoryName.addInventoryItemName(testInventoryItemName);
 		inventoryItemNameRepository.create(testInventoryItemName);
 		
 		testId = null;
-		//testCategoryName = categoryNameRepository.findCategoryNameByName("Computers");
-		//testInventoryItemName = inventoryItemNameRepository.findInventoryItemNameByName("Laptop");
 		testProducerName = "Sony";
 		testVersionName = "test_v";
 		testQuantityInStock = 100;
@@ -81,7 +81,6 @@ public class LaptopRepositoryTest {
 		
 		testLaptop = new Laptop();
 		testLaptop.setId(testId);
-		testLaptop.setCategoryName(testCategoryName);
 		testLaptop.setInventoryItemName(testInventoryItemName);
 		testLaptop.setProducerName(testProducerName);
 		testLaptop.setVersionName(testVersionName);
@@ -108,8 +107,8 @@ public class LaptopRepositoryTest {
 		
 		testLaptop = null;
 		
+		//inventoryItemNameRepository.deleteById(testInventoryItemName.getId());
 		categoryNameRepository.deleteById(testCategoryName.getId());
-		inventoryItemNameRepository.deleteById(testInventoryItemName.getId());
 	}
 	
 	@Test
