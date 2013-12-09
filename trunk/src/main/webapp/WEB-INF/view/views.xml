@@ -27,4 +27,8 @@
 		<put-attribute name="content" value="/WEB-INF/view/register.jsp" />
 	</definition>
 	
+	<definition name="catalog" extends="template">
+		<put-attribute name="content" value="/WEB-INF/view/catalog/catalog.jsp" />
+	</definition>
+	
 </tiles-definitions>

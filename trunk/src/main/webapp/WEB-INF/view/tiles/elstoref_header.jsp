@@ -5,7 +5,7 @@
 	<h3 class="text-muted">Project name</h3>
 	<ul class="nav nav-justified">
 		<li class="active"><a href="<s:url value="/home" />">Home</a></li>
-		<li><a href="catalog.html">Catalog</a></li>
+		<li><a href="<s:url value="/catalog" />">Catalog</a></li>
 		<li><a href="<s:url value="/account/signin" />">Login</a></li>
 		<li><a href="<s:url value="/account/signup" />">Register</a></li>
 		<li><a href="shopping_cart.html">Shopping Cart</a></li>
