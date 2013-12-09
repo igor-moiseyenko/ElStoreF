@@ -1,5 +1,7 @@
 package com.imoiseyenko.elstoref.iservice;
 
+import java.util.List;
+
 import com.imoiseyenko.elstoref.domain.inventoryItem.MobilePhone;
 
 public interface IMobilePhoneService {
@@ -11,4 +13,6 @@ public interface IMobilePhoneService {
 	public MobilePhone updateMobilePhone (MobilePhone mobilePhone);
 	
 	public void deleteMobilePhoneById (Object id);
+	
+	public List<MobilePhone> findAllMobilePhones ();
 }
