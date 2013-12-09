@@ -2,11 +2,16 @@ package com.imoiseyenko.elstoref.domain.inventoryItem;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 import com.imoiseyenko.elstoref.domain.inventoryItem.sparePartInfo.CPUInfo;
 import com.imoiseyenko.elstoref.domain.inventoryItem.sparePartInfo.DRAMInfo;
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name="Laptop.findAllLaptops", query="SELECT l FROM Laptop l")
+})
 public class Laptop extends InventoryItem {
 	
 	private static final long serialVersionUID = 1L;
