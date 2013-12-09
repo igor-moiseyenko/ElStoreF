@@ -52,6 +52,8 @@ public class MobilePhoneRepositoryTest {
 	private double testScreenDiagonal;
 	private int testBatteryCapacity;
 	private double testCameraPixels;
+	private String testDescription;
+	private String testImgUrl;
 	
 	private DRAMInfo testDramInfo;
 	private CPUInfo testCpuInfo;
@@ -80,6 +82,8 @@ public class MobilePhoneRepositoryTest {
 		testScreenDiagonal = 4.3;
 		testBatteryCapacity = 1650;
 		testCameraPixels = 8.0;
+		testDescription = "test description";
+		testImgUrl = "test/img/url.gif";
 		
 		testPriceForUpdate = 2000.0;
 		
@@ -97,6 +101,8 @@ public class MobilePhoneRepositoryTest {
 		testMobilePhone.setScreenDiagonal(testScreenDiagonal);
 		testMobilePhone.setBatteryCapacity(testBatteryCapacity);
 		testMobilePhone.setCameraPixels(testCameraPixels);
+		testMobilePhone.setDescription(testDescription);
+		testMobilePhone.setImgUrl(testImgUrl);
 		
 		testDramInfo = new DRAMInfo("MobileDRAM", 4, 1);
 		testMobilePhone.setDramInfo(testDramInfo);

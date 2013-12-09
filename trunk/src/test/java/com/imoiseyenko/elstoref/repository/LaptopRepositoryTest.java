@@ -51,6 +51,8 @@ public class LaptopRepositoryTest {
 	private double testWeight;
 	private double testScreenDiagonal;
 	private int testBatteryCapacity;
+	private String testDescription;
+	private String testImgUrl;
 	
 	private DRAMInfo testDramInfo;
 	private CPUInfo testCpuInfo;
@@ -78,6 +80,8 @@ public class LaptopRepositoryTest {
 		testWeight = 1.5;
 		testScreenDiagonal = 13.3;
 		testBatteryCapacity = 2600;
+		testDescription = "test description";
+		testImgUrl = "test/img/url.gif";
 		
 		testLaptop = new Laptop();
 		testLaptop.setId(testId);
@@ -92,6 +96,8 @@ public class LaptopRepositoryTest {
 		testLaptop.setWeight(testWeight);
 		testLaptop.setScreenDiagonal(testScreenDiagonal);
 		testLaptop.setBatteryCapacity(testBatteryCapacity);
+		testLaptop.setDescription(testDescription);
+		testLaptop.setImgUrl(testImgUrl);
 		
 		testDramInfo = new DRAMInfo("DDR3", 8, 2);
 		testLaptop.setDramInfo(testDramInfo);
