@@ -1,5 +1,7 @@
 package com.imoiseyenko.elstoref.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -48,6 +50,13 @@ public class CategoryNameService implements ICategoryNameService {
 	public CategoryName findCategoryNameByName (String name) {
 
 		return categoryNameRepository.findCategoryNameByName(name);
+	}
+
+	@Override
+	@Transactional(propagation=Propagation.SUPPORTS, readOnly=true)
+	public List<CategoryName> findAllCategoryNames () {
+
+		return categoryNameRepository.findAllCategoryNames();
 	}
 
 }

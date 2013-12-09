@@ -25,4 +25,13 @@ public class CategoryNameRepository extends GenericRepository<CategoryName>
 		return !results.isEmpty() ? results.get(0) : null;
 	}
 
+	@Override
+	public List<CategoryName> findAllCategoryNames () {
+
+		TypedQuery<CategoryName> query = em.createNamedQuery(
+				"CategoryName.findAllCategoryNames", CategoryName.class);
+		
+		return query.getResultList();
+	}
+
 }

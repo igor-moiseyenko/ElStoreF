@@ -27,4 +27,17 @@ public class InventoryItemNameRepository extends
 		return !results.isEmpty() ? results.get(0) : null;
 	}
 
+	@Override
+	public List<InventoryItemName> findInventoryItemNamesByCategoryName (
+			String categoryName) {
+
+		TypedQuery<InventoryItemName> query = em.createNamedQuery(
+				"InventoryItemName.findInventoryItemNamesByCategoryName",
+				InventoryItemName.class);
+		
+		query.setParameter("categoryName", categoryName);
+		
+		return query.getResultList();
+	}
+
 }
