@@ -10,7 +10,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.imoiseyenko.elstoref.domain.DomainObject;
-import com.imoiseyenko.elstoref.domain.util.CategoryName;
 import com.imoiseyenko.elstoref.domain.util.InventoryItemName;
 
 
@@ -19,9 +18,6 @@ import com.imoiseyenko.elstoref.domain.util.InventoryItemName;
 public abstract class InventoryItem extends DomainObject {
 
 	private static final long serialVersionUID = 1L;
-	
-	@ManyToOne
-	private CategoryName categoryName;
 	
 	@ManyToOne
 	private InventoryItemName inventoryItemName;
@@ -39,16 +35,6 @@ public abstract class InventoryItem extends DomainObject {
 	private Calendar dateOfEntry;
 	
 	public InventoryItem () {}
-	
-	public CategoryName getCategoryName () {
-	
-		return categoryName;
-	}
-	
-	public void setCategoryName (CategoryName categoryName) {
-	
-		this.categoryName = categoryName;
-	}
 	
 	public InventoryItemName getInventoryItemName () {
 		
@@ -164,8 +150,7 @@ public abstract class InventoryItem extends DomainObject {
 		
 		InventoryItem other = (InventoryItem) obj;
 		
-		if (this.categoryName.equalsByFields(other.categoryName)
-				&& this.inventoryItemName.equalsByFields(other.inventoryItemName)
+		if (this.inventoryItemName.equalsByFields(other.inventoryItemName)
 				&& this.producerName.equals(other.producerName)
 				&& this.versionName.equals(other.versionName)
 				&& this.quantityInStock == other.quantityInStock
