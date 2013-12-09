@@ -1,5 +1,7 @@
 package com.imoiseyenko.elstoref.iservice;
 
+import java.util.List;
+
 import com.imoiseyenko.elstoref.domain.util.InventoryItemName;
 
 public interface IInventoryItemNameService {
@@ -13,4 +15,6 @@ public interface IInventoryItemNameService {
 	public void deleteInventoryItemNameById (Object id);
 	
 	public InventoryItemName findInventoryItemNameByName (String name);
+	
+	public List<InventoryItemName> findInventoryItemNamesByCategoryName (String categoryName);
 }
