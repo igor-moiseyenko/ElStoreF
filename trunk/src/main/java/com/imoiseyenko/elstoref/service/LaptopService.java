@@ -1,5 +1,7 @@
 package com.imoiseyenko.elstoref.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -41,6 +43,13 @@ public class LaptopService implements ILaptopService {
 	public void deleteLaptopById (Object id) {
 
 		laptopRepository.deleteById(id);
+	}
+
+	@Override
+	@Transactional(propagation=Propagation.SUPPORTS, readOnly=true)
+	public List<Laptop> findAllLaptops () {
+
+		return laptopRepository.findAllLaptops();
 	}
 
 }

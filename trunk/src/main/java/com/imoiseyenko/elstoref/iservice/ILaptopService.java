@@ -1,5 +1,7 @@
 package com.imoiseyenko.elstoref.iservice;
 
+import java.util.List;
+
 import com.imoiseyenko.elstoref.domain.inventoryItem.Laptop;
 
 public interface ILaptopService {
@@ -11,4 +13,6 @@ public interface ILaptopService {
 	public Laptop updateLaptop (Laptop laptop);
 	
 	public void deleteLaptopById (Object id);
+	
+	public List<Laptop> findAllLaptops ();
 }
