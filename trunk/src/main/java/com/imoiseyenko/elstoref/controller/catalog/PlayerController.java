@@ -3,6 +3,7 @@ package com.imoiseyenko.elstoref.controller.catalog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -13,6 +14,7 @@ import com.imoiseyenko.elstoref.iservice.IPlayerService;
 public class PlayerController {
 
 	private static final String CATALOG_NAME = "Player catalog";
+	private static final String CATALOG_URL = "/catalog/player";
 	
 	@Autowired
 	private IPlayerService playerService;
@@ -21,8 +23,17 @@ public class PlayerController {
 	public String showPlayerCatalogPage (Model model) {
 		
 		model.addAttribute("catalogName", CATALOG_NAME);
+		model.addAttribute("catalogUrl", CATALOG_URL);
 		model.addAttribute("inventoryItemList", playerService.findAllPlayers());
 		
 		return "inventory_item_catalog";
+	}
+	
+	@RequestMapping(value="/{id}", method=RequestMethod.GET)
+	public String showPlayerDetailsPage (@PathVariable Long id, Model model) {
+		
+		model.addAttribute("item", playerService.findPlayerById(id));
+		
+		return "inventory_item_details";
 	}
 }
