@@ -16,7 +16,7 @@
 				<div class="panel-body">
 					<img class="img-thumbnail" alt="<c:out value="${item.producerName} ${item.versionName}" />" src="<s:url value="${item.imgUrl}" />">
 					<c:out value="${item.price}" />
-					<a class="btn btn-primary" href="">View details &raquo;</a>
+					<a class="btn btn-primary" href="<s:url value="${catalogUrl}/${item.id}" />">View details &raquo;</a>
 					<div class="well">
 						<p><c:out value="${item.description}" /></p>
 					</div>
