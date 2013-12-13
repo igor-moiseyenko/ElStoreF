@@ -21,6 +21,7 @@
 				Thickness: <c:out value="${item.thickness} mm" /><br />
 				Weight: <c:out value="${item.weight} gm" /><br />
 				Price: <c:out value="${item.price} $" />
+				<a class="btn btn-primary" href="#">Order</a>
 			</div>
 			<div class="well">
 				<p><c:out value="${item.description}" /></p>
