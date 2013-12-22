@@ -32,8 +32,8 @@ public class MobileCatalogController {
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public String showMobileDetailsPage (@PathVariable Long id, Model model) {
 		
-		model.addAttribute("item", mobilePhoneService.findMobilePhoneById(id));
+		model.addAttribute("mobile", mobilePhoneService.findMobilePhoneById(id));
 		
-		return "inventory_item_details";
+		return "mobile_details";
 	}
 }
