@@ -47,6 +47,10 @@
 		<put-attribute name="content" value="/WEB-INF/view/catalog/mobile_details.jsp" />
 	</definition>
 	
+	<definition name="player_details" extends="template">
+		<put-attribute name="content" value="/WEB-INF/view/catalog/player_details.jsp" />
+	</definition>
+	
 	<definition name="order_result" extends="template">
 		<put-attribute name="content" value="/WEB-INF/view/order_result.jsp" />
 	</definition>
