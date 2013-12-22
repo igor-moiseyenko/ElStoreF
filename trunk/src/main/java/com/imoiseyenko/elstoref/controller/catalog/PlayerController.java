@@ -32,8 +32,8 @@ public class PlayerController {
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public String showPlayerDetailsPage (@PathVariable Long id, Model model) {
 		
-		model.addAttribute("item", playerService.findPlayerById(id));
+		model.addAttribute("player", playerService.findPlayerById(id));
 		
-		return "inventory_item_details";
+		return "player_details";
 	}
 }
