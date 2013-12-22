@@ -20,11 +20,11 @@
 	</definition>
 	
 	<definition name="signin" extends="template">
-		<put-attribute name="content" value="/WEB-INF/view/login.jsp" />
+		<put-attribute name="content" value="/WEB-INF/view/account/login.jsp" />
 	</definition>
 	
 	<definition name="signup" extends="template">
-		<put-attribute name="content" value="/WEB-INF/view/register.jsp" />
+		<put-attribute name="content" value="/WEB-INF/view/account/register.jsp" />
 	</definition>
 	
 	<definition name="catalog" extends="template">
@@ -37,6 +37,14 @@
 	
 	<definition name="inventory_item_details" extends="template">
 		<put-attribute name="content" value="/WEB-INF/view/catalog/inventory_item_details.jsp" />
+	</definition>
+	
+	<definition name="laptop_details" extends="template">
+		<put-attribute name="content" value="/WEB-INF/view/catalog/laptop_details.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="order_result" extends="template">
+		<put-attribute name="content" value="/WEB-INF/view/order_result.jsp" />
 	</definition>
 	
 </tiles-definitions>
