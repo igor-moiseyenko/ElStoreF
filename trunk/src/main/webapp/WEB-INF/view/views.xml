@@ -40,7 +40,11 @@
 	</definition>
 	
 	<definition name="laptop_details" extends="template">
-		<put-attribute name="content" value="/WEB-INF/view/catalog/laptop_details.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/view/catalog/laptop_details.jsp" />
+	</definition>
+	
+	<definition name="mobile_details" extends="template">
+		<put-attribute name="content" value="/WEB-INF/view/catalog/mobile_details.jsp" />
 	</definition>
 	
 	<definition name="order_result" extends="template">
