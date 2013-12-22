@@ -2,5 +2,5 @@
 <%@ taglib prefix="t" uri="http://tiles.apache.org/tags-tiles" %>
 
 <div class="footer">
-	<p>&copy; Company 2013</p>
+	<p>&copy; <s:message code="project.copyright" text="project.copyright" /></p>
 </div>
