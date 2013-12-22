@@ -20,11 +20,11 @@
 	</definition>
 	
 	<definition name="signin" extends="template">
-		<put-attribute name="content" value="/WEB-INF/view/account/login.jsp" />
+		<put-attribute name="content" value="/WEB-INF/view/account/signin.jsp" />
 	</definition>
 	
 	<definition name="signup" extends="template">
-		<put-attribute name="content" value="/WEB-INF/view/account/register.jsp" />
+		<put-attribute name="content" value="/WEB-INF/view/account/signup.jsp" />
 	</definition>
 	
 	<definition name="catalog" extends="template">
