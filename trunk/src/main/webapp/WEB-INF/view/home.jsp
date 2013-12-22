@@ -4,7 +4,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <div class="jumbotron">
-	<h1>Site name</h1>
+	<h1>
+		<s:message code="home.header" text="home.header" />
+	</h1>
 	<p class="lead">
 		Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.
 	</p>
