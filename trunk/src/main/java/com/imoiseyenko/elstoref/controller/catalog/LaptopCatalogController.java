@@ -32,8 +32,8 @@ public class LaptopCatalogController {
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public String showLaptopDetails (@PathVariable Long id, Model model) {
 		
-		model.addAttribute("item", laptopService.findLaptopById(id));
+		model.addAttribute("laptop", laptopService.findLaptopById(id));
 		
-		return "inventory_item_details";
+		return "laptop_details";
 	}
 }
