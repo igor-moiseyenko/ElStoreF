@@ -14,7 +14,7 @@ import com.imoiseyenko.elstoref.iservice.IAccountService;
 
 @Controller
 @RequestMapping("account")
-public class LoginController {
+public class SignInController {
 	
 	@Autowired
 	private IAccountService accountService;
@@ -25,7 +25,7 @@ public class LoginController {
 		return "signin";
 	}
 	
-	@RequestMapping(value="doSignIn", method=RequestMethod.POST)
+	@RequestMapping(value="signin", method=RequestMethod.POST)
 	public String doLogin (@RequestParam("username") String username, @RequestParam("password") String password, Model model) {
 		
 		Account account = accountService.findAccountByUsername(username);

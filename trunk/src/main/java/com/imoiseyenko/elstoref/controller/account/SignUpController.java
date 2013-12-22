@@ -14,7 +14,7 @@ import com.imoiseyenko.elstoref.iservice.IAccountService;
 
 @Controller
 @RequestMapping("account")
-public class RegisterController {
+public class SignUpController {
 
 	@Autowired
 	private IAccountService accountService;
@@ -27,7 +27,7 @@ public class RegisterController {
 		return "signup";
 	}
 	
-	@RequestMapping(value="doSignUp", method = RequestMethod.POST)
+	@RequestMapping(value="signup", method = RequestMethod.POST)
 	public String doRegister (@Valid Account account, BindingResult bindingResult) {
 		
 		// Check for errors
