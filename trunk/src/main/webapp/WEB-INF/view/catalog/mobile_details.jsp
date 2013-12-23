@@ -2,7 +2,9 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 
 <div class="jumbotron">
-	<h1><c:out value="${mobile.producerName} ${mobile.versionName}" /></h1>
+	<h1>
+		<c:out value="${mobile.producerName} ${mobile.versionName}" />
+	</h1>
 </div>
 
 <div class="row">
@@ -13,15 +15,33 @@
 				<c:out value="${mobile.versionName}" />
 			</div>
 			<div class="panel-body">
-				<img style="float:left" class="img-thumbnail" alt="<c:out value="${mobile.producerName} ${mobile.versionName}" />" src="<s:url value="${mobile.imgUrl}" />">
-				Producer name: <c:out value="${mobile.producerName}" /><br />
-				Version name: <c:out value="${mobile.versionName}" /><br />
-				Length: <c:out value="${mobile.length} mm" /><br />
-				Width: <c:out value="${mobile.width} mm" /><br />
-				Thickness: <c:out value="${mobile.thickness} mm" /><br />
-				Weight: <c:out value="${mobile.weight} gm" /><br />
-				Price: <c:out value="${mobile.price} $" />
-				<a class="btn btn-primary" href="#">Order</a>
+				<img style="float:left"
+					class="img-thumbnail"
+					alt="<c:out value="${mobile.producerName} ${mobile.versionName}" />"
+					src="<s:url value="${mobile.imgUrl}" />">
+				<s:message code="details.item.producer.name" text="details.item.producer.name" />&#58;
+				<c:out value="${mobile.producerName}" />
+				<br />
+				<s:message code="details.item.version.name" text="details.item.version.name" />&#58;
+				<c:out value="${mobile.versionName}" />
+				<br />
+				<s:message code="details.item.length" text="details.item.length" />&#58;
+				<c:out value="${mobile.length} mm" />
+				<br />
+				<s:message code="details.item.width" text="details.item.width" />&#58;
+				<c:out value="${mobile.width} mm" />
+				<br />
+				<s:message code="details.item.thickness" text="details.item.thickness" />&#58;
+				<c:out value="${mobile.thickness} mm" />
+				<br />
+				<s:message code="details.item.weight" text="details.item.weight" />&#58;
+				<c:out value="${mobile.weight} gm" />
+				<br />
+				<s:message code="details.item.price" text="details.item.price" />&#58;
+				<c:out value="${mobile.price} $" />
+				<a class="btn btn-primary" href="#">
+					<s:message code="details.item.order" text="details.item.order" />&raquo;
+				</a>
 			</div>
 			<div class="well">
 				<p><c:out value="${mobile.description}" /></p>
