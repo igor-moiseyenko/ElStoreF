@@ -15,7 +15,7 @@ import javax.persistence.Table;
 import com.imoiseyenko.elstoref.domain.DomainObject;
 
 @Entity
-@Table(name="CategoryName", schema="dbo")
+@Table(name="CategoryName")
 @NamedQueries({
 	@NamedQuery(name="CategoryName.findCategoryNameByName", query="SELECT c FROM CategoryName c WHERE c.name = :name"),
 	@NamedQuery(name="CategoryName.findAllCategoryNames", query="SELECT c FROM CategoryName c")

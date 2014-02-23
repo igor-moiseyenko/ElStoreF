@@ -10,7 +10,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="\"Order\"", schema="dbo")
+@Table(name="\"Order\"")
 public class Order extends DomainObject {
 
 	private static final long serialVersionUID = 1L;

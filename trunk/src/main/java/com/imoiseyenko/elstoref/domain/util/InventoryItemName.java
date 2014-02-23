@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import com.imoiseyenko.elstoref.domain.DomainObject;
 
 @Entity
-@Table(name = "InventoryItemName", schema = "dbo")
+@Table(name = "InventoryItemName")
 @NamedQueries({
 		@NamedQuery(name = "InventoryItemName.findInventoryItemNameByName",
 				query = "SELECT i FROM InventoryItemName i WHERE i.name = :name"),

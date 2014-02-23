@@ -8,7 +8,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name="Account", schema="dbo")
+@Table(name="Account")
 @NamedQueries({
 	@NamedQuery(name="Account.findAccountByUsername", query="SELECT a FROM Account a WHERE a.username = :username"),
 	@NamedQuery(name="Account.findAccountByEmail", query="SELECT a FROM Account a WHERE a.email = :email")
